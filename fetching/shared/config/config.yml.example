@@ -1,0 +1,15 @@
+application:
+  server:
+    host: "0.0.0.0"
+    port: "8080"
+  resources:
+    redis:
+      instance: localhost
+      port: 6379
+      dbnumber: 0
+      password:
+    jwt:
+      secret: efisherytest
+    urls:
+      list: https://stein.efishery.com/v1/storages/5e1edf521073e315924ceab4/list
+      convertion: https://free.currconv.com/api/v7/convert?q=USD_IDR&compact=ultra&apiKey=5a3fba063701c29455a9
