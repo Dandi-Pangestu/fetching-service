@@ -84,3 +84,15 @@ Running test
 ```
 npm run test
 ```
+
+### Testing in Fetching Service
+
+Prepare environment
+```
+cd fetching/shared/utils
+```
+
+Running test
+```
+go test -v
+```
