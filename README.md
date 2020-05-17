@@ -4,7 +4,7 @@ This project about fetching data from the resources.
 
 ## Getting Started
 
-In this project there are two services, namely Auth service and Data Fetching service. Auth service is made using NodeJS and Fetching Data is created using Golang. Each will be explained above how to install it. See api documentations [here](https://github.com/Dandi-Pangestu/efishery-service).
+In this project there are two services, namely Auth service and Data Fetching service. Auth service is made using NodeJS and Fetching Data is created using Golang. Each will be explained above how to install it. See api documentations [here](https://github.com/Dandi-Pangestu/efishery-service/blob/master/doc-api.md).
 
 ### Prerequisites
 
