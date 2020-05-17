@@ -65,6 +65,25 @@ func (h *FetchingHandler) Fetch(c echo.Context) error {
 	return c.JSON(http.StatusOK, res)
 }
 
+func (h *FetchingHandler) Aggregate(c echo.Context) error {
+	listUrl := viper.GetString("application.resources.urls.list")
+
+	restRes, err := h.RestService.Get(listUrl, nil, nil)
+	if err != nil || restRes.StatusCode != 200 {
+		return c.JSON(http.StatusInternalServerError, domains.ResponseError{Message: domains.ErrInternalServerError.Error()})
+	}
+
+	var fetchingMappers []request.FetchingMapperDTO
+	err = json.Unmarshal(restRes.Body, &fetchingMappers)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, domains.ResponseError{Message: domains.ErrInternalServerError.Error()})
+	}
+
+	res := mapper.ToListToFetchingDTOs(&fetchingMappers, func(m *request.FetchingMapperDTO, dto *response.FetchingDTO) {})
+
+	return c.JSON(http.StatusOK, res)
+}
+
 func (h *FetchingHandler) ClaimToken(c echo.Context) error {
 	name := c.Get("name").(string)
 	phone := c.Get("phone").(string)
