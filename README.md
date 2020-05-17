@@ -11,10 +11,17 @@ In this project there are two services, namely Auth service and Data Fetching se
 * [NodeJS](https://nodejs.org/en/) - Framework for Auth Service
 * [NPM](https://www.npmjs.com/) - Package manager for NodeJS
 * [MongoDB](https://www.mongodb.com/) - Database used
+* [Go](https://golang.org/) - Framework for Fetching Service
+* [Redis](https://redis.io/) - Caching data
 
 ### Installing (Auth Service)
 
 This step for installing Auth Service
+
+Make sure MongoDB already on
+```
+sudo service mongod start 
+```
 
 Prepare environment
 ```
@@ -33,6 +40,33 @@ npm run dev
 ```
 
 The server will running at localhost:4000
+
+### Installing (Fetching Service)
+
+This step for installing Fetching Service
+
+Make sure Redis already on
+```
+sudo service redis-server start 
+```
+
+Prepare environment
+```
+cd fetching
+```
+
+Install dependencies
+```
+go mod tidy
+```
+
+Running server
+```
+go build
+./micro
+```
+
+The server will running at localhost:8080
 
 ## Running the tests
 
