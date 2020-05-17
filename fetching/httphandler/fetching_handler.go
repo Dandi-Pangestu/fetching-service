@@ -64,3 +64,11 @@ func (h *FetchingHandler) Fetch(c echo.Context) error {
 
 	return c.JSON(http.StatusOK, res)
 }
+
+func (h *FetchingHandler) ClaimToken(c echo.Context) error {
+	name := c.Get("name").(string)
+	phone := c.Get("phone").(string)
+	role := c.Get("role").(string)
+
+	return c.JSON(http.StatusOK, mapper.ToClaimTokenDTO(name, phone, role))
+}

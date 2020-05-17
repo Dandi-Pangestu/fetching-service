@@ -20,4 +20,5 @@ func NewFetchingRouter(e *echo.Echo, authMiddleware *middleware.AuthMiddleware, 
 	g.Use(authMiddleware.JWTAuth)
 
 	g.GET("/fetch", handler.Fetch)
+	g.GET("/claim-token", handler.ClaimToken)
 }
