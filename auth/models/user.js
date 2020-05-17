@@ -18,6 +18,9 @@ let userSchema = new Schema({
     password: {
         type: String,
     },
+    timestamp: {
+        type: String,
+    },
 }, {
     collections: 'users',
 });

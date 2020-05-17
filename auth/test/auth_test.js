@@ -37,6 +37,7 @@ function createUser() {
             phone: '08756756757',
             role: 'admin',
             password: hash,
+            timestamp: Date.now().toString(),
         });
         user.save().then(response => {
             user = response;
@@ -213,6 +214,7 @@ describe('Get Profile', () => {
                 name: user.name,
                 phone: user.phone,
                 role: user.role,
+                timestamp: user.timestamp,
             }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
@@ -227,6 +229,7 @@ describe('Get Profile', () => {
                         name: user.name,
                         phone: user.phone,
                         role: user.role,
+                        timestamp: user.timestamp,
                     });
                     done();
                 });

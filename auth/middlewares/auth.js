@@ -11,6 +11,7 @@ module.exports = (req, res, next) => {
             name: decoded.name,
             phone: decoded.phone,
             role: decoded.role,
+            timestamp: decoded.timestamp,
         };
         next();
     } catch (e) {

@@ -32,6 +32,7 @@ router.post('/register',
             phone: req.body.phone,
             role: req.body.role,
             password: hash,
+            timestamp: Date.now().toString(),
         });
         user.save().then((response) => {
             let jwtToken = jwt.sign({
@@ -39,6 +40,7 @@ router.post('/register',
                 name: response.name,
                 phone: response.phone,
                 role: response.role,
+                timestamp: response.timestamp,
             }, process.env.JWT_SECRET_KEY, {
                 expiresIn: '1h',
             });
@@ -93,6 +95,7 @@ router.post('/login',
             name: user.name,
             phone: user.phone,
             role: user.role,
+            timestamp: user.timestamp,
         }, process.env.JWT_SECRET_KEY, {
             expiresIn: '1h',
         });
@@ -112,6 +115,7 @@ router.route('/profile').get(authorize, (req, res, next) => {
         name: req.authUser.name,
         phone: req.authUser.phone,
         role: req.authUser.role,
+        timestamp: req.authUser.timestamp,
     });
 });
 
