@@ -51,7 +51,7 @@ func (h *FetchingHandler) Fetch(c echo.Context) error {
 		usdToIdr, _ = strconv.ParseFloat(result, 64)
 	}
 
-	res := mapper.ToListToFetchingDTOs(&fetchingMappers, func(m *request.FetchingMapperDTO, dto *response.FetchingDTO) {
+	res := mapper.ToListFetchingDTOs(&fetchingMappers, func(m *request.FetchingMapperDTO, dto *response.FetchingDTO) {
 		if dto.Price == nil {
 			return
 		}
@@ -79,9 +79,7 @@ func (h *FetchingHandler) Aggregate(c echo.Context) error {
 		return c.JSON(http.StatusInternalServerError, domains.ResponseError{Message: domains.ErrInternalServerError.Error()})
 	}
 
-	res := mapper.ToListToFetchingDTOs(&fetchingMappers, func(m *request.FetchingMapperDTO, dto *response.FetchingDTO) {})
-
-	return c.JSON(http.StatusOK, res)
+	return c.JSON(http.StatusOK, mapper.ToListAggregateDTOs(utils.Grouping(fetchingMappers)))
 }
 
 func (h *FetchingHandler) ClaimToken(c echo.Context) error {

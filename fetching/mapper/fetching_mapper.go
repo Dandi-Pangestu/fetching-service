@@ -25,7 +25,7 @@ func ToFetchingDTO(m *request.FetchingMapperDTO,
 	return dto
 }
 
-func ToListToFetchingDTOs(m *[]request.FetchingMapperDTO,
+func ToListFetchingDTOs(m *[]request.FetchingMapperDTO,
 	fn func(m *request.FetchingMapperDTO, dto *response.FetchingDTO)) []response.FetchingDTO {
 
 	dtos := make([]response.FetchingDTO, len(*m))
