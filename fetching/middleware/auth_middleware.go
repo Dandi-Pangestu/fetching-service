@@ -44,6 +44,7 @@ func (m *AuthMiddleware) JWTAuth(next echo.HandlerFunc) echo.HandlerFunc {
 			context.Set("name", customClaim.Name)
 			context.Set("phone", customClaim.Phone)
 			context.Set("role", customClaim.Role)
+			context.Set("timeStamp", customClaim.TimeStamp)
 
 			return next(context)
 		}

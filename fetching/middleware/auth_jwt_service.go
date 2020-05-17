@@ -8,10 +8,11 @@ import (
 
 type CustomClaims struct {
 	jwt.StandardClaims
-	ID    string `json:"id"`
-	Name  string `json:"name"`
-	Phone string `json:"phone"`
-	Role  string `json:"role"`
+	ID        string `json:"id"`
+	Name      string `json:"name"`
+	Phone     string `json:"phone"`
+	Role      string `json:"role"`
+	TimeStamp string `json:"timestamp"`
 }
 
 type Authable interface {
